@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
+import { MapStoreProvider } from "../context/MapStore";
+import { SnackbarProvider } from "notistack";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <SnackbarProvider
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+    >
+      <MapStoreProvider>
+        <Component {...pageProps} />
+      </MapStoreProvider>
+    </SnackbarProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;

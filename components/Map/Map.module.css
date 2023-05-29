@@ -1,0 +1,79 @@
+.card {
+    width: 250px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.label {
+    width: max-content;
+    color: tomato;
+    font-size: 13px;
+    border-bottom: .5px solid tomato;
+    margin: 3px 0;
+}
+
+.title {
+  font-size: 16px;
+}
+
+.about {
+    font-size: 14px;
+}
+
+.star {
+    color: gold;
+}
+
+.username {
+    font-size: 14px;
+}
+
+.date {
+    font-size: 12px;
+}
+
+/* .form {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: rgb(88, 87, 87);
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid gray;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  font-size: 12px;
+  color: rgb(185, 184, 184);
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+}
+
+.textarea {
+  border: none;
+  border-bottom: 1px solid gray;
+} */
+
+.imageContainer {
+  width: 70vw;
+}
+
+/* .submitButton {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: tomato;
+  cursor: pointer;
+} */

@@ -13,30 +13,30 @@ const MapWithNoSSR = dynamic(() => import("../components/Map/Map"), {
   ssr: false,
 });
 
-export default function Home({ pin }) {
-  const { state, dispatch } = useContext(MapStore);
-  const { createdPin } = state;
-  const [geoData, setGeoData] = useState({ lat: 0, lng: 0 });
-  const [pins, setPins] = useState([]);
+export default function Search({ pinDocs, countPins }) {
+  //   const { state, dispatch } = useContext(MapStore);
+  //   const { createdPin } = state;
+  const [geoDataSearch, setGeoDataSearch] = useState({ lat: 0, lng: 0 });
+  // const [pins, setPins] = useState([]);
   // const [createdPin, setCreatedPin] = useState(false);
   // const [newPlace, setNewPlace] = useState(null);
   // function updatePin() {
   //   setCreatedPin(true);
   // }
 
-  useEffect(() => {
-    const fetchPins = async () => {
-      try {
-        dispatch({ type: "CREATED_PIN", payload: false });
-        const { data } = await axios.get("/api/pins");
-        setPins(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  //   useEffect(() => {
+  //     const fetchPins = async () => {
+  //       try {
+  //         dispatch({ type: "CREATED_PIN", payload: false });
+  //         const { data } = await axios.get("/api/pins");
+  //         setPins(data);
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     };
 
-    fetchPins();
-  }, [pin, createdPin]);
+  //     fetchPins();
+  //   }, [pin, createdPin]);
 
   return (
     <div className={styles.container}>
@@ -51,8 +51,9 @@ export default function Home({ pin }) {
 
       <div>
         <MapWithNoSSR
-          geoData={geoData}
-          pins={pins}
+          geoDataSearch={geoDataSearch}
+          pinDocs={pinDocs}
+          countPins={countPins}
           // updatePin={updatePin}
           // setPins={setPins}
           // setCreatedPin={setCreatedPin}
@@ -68,15 +69,56 @@ export default function Home({ pin }) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async ({ query }) => {
   await db.connect();
-  const pin = await Pin.find().lean();
+  const searchQuery = query.query || "";
+
+  const queryFilter =
+    searchQuery && searchQuery !== ""
+      ? {
+          $or: [
+            {
+              title: {
+                $regex: searchQuery,
+                $options: "i",
+              },
+            },
+            {
+              description: {
+                $regex: searchQuery,
+                $options: "i",
+              },
+            },
+          ],
+        }
+      : {};
+
+  const pinDocs = await Pin.find({
+    ...queryFilter,
+  }).lean();
+
+  const countPins = await Pin.countDocuments({
+    ...queryFilter,
+  });
+
   await db.disconnect();
+
   return {
     props: {
-      pin: JSON.parse(JSON.stringify(pin)),
+      pinDocs: JSON.parse(JSON.stringify(pinDocs)),
+      countPins: countPins,
     },
   };
+
+  //   await db.connect();
+  //   const pin = await Pin.find().lean();
+  //   await db.disconnect();
+  //   return {
+  //     props: {
+  //       pin: JSON.parse(JSON.stringify(pin)),
+  //     },
+  //   };
+
   // /* we're able to use Nextjs's ISR (incremental static regeneration)
   // revalidate functionality to re-fetch updated map coords and re-render one a regular interval */
   // const { data } = await axios.get("/api/pins");

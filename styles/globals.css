@@ -1,9 +1,16 @@
+@import 'leaflet/dist/leaflet.css'; 
+@import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
+@import 'leaflet-defaulticon-compatibility';
+@import 'leaflet-geosearch/dist/geosearch.css';
+
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: -apple-system, Comfortaa, cursive,  BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    
 }
 
 a {
@@ -13,9 +20,26 @@ a {
 
 * {
   box-sizing: border-box;
+  font-family: 'Comfortaa', cursive;
+  
 }
 
-@media (prefers-color-scheme: dark) {
+.leaflet-top {
+  margin-top: 80px;
+}
+
+.leaflet-control-geosearch form input.glass {
+  height: 30px;
+  
+}
+
+/* input {
+    height: 30px;
+    background-color: #fff;
+    color: #ffffff; 
+  } */
+
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -23,4 +47,5 @@ a {
     color: white;
     background: black;
   }
-}
+  
+} */
