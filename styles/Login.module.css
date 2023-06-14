@@ -2,32 +2,11 @@
     margin: 0;
     padding: 0;
     color: #ffffff;
-    /* position: relative; */
-    /* added */
-    /* z-index: 1; */
-    /* added above */
-    /* top: 0;
-    left: 0;
-    bottom: 0; */
-    /* Photo by Kammeran Gonzalez-Keola from Pexels: */
     background:
     url("/images/login-background.jpg")
     no-repeat center center fixed ;
-    /* filter: invert(1); */
     background-size: cover;
     filter: brightness(60%);
-    /* display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center; */
-    
-    
-
-    /* transform: scale(1.1);
-  transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95); */
-    /* object-fit: cover; */
-    /* object-position: left; */
-    /* height: 100%; */
     width: 100vw;
     height: 100vh;
 }
@@ -40,28 +19,6 @@
   
 }
 
-/* .form input {
-  color: #ffffff;
-  background-color: transparent;
-  
-} */
-
-/* .form input::-webkit-input-placeholder {
-  color: red;
-} */
-
 .logo {
   width: 45px;
-  /* display: inline-block;
-  margin: 0 auto; */
-  /* display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto; */
-  /* align-self: center; */
-  /* justify-content: center;
-  align-content: center; */
-
-
-  
 }

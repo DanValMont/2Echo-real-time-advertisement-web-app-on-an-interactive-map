@@ -6,30 +6,6 @@
     justify-content: space-around;
 }
 
-/* .label {
-    width: max-content;
-    color: tomato;
-    font-size: 13px;
-    border-bottom: .5px solid tomato;
-    margin: 3px 0;
-}
-
-.about {
-    font-size: 14px;
-}
-
-.star {
-    color: gold;
-}
-
-.username {
-    font-size: 14px;
-}
-
-.date {
-    font-size: 12px;
-} */
-
 .form {
   width: 250px;
   height: 250px;
@@ -60,10 +36,6 @@
   border: none;
   border-bottom: 1px solid gray;
 }
-
-/* .imageContainer {
-  width: 70vw;
-} */
 
 .submitButton {
   border: none;

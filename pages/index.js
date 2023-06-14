@@ -1,5 +1,4 @@
 import Head from "next/head";
-//import Image from 'next/image'
 import styles from "../styles/Home.module.css";
 import dynamic from "next/dynamic";
 import axios from "axios";
@@ -7,7 +6,6 @@ import { useEffect, useState, useContext } from "react";
 import { MapStore } from "../context/MapStore";
 import db from "../utils/db";
 import Pin from "../models/Pin";
-// import { LeafletContext } from "@react-leaflet/core";
 
 const MapWithNoSSR = dynamic(() => import("../components/Map/Map"), {
   ssr: false,
@@ -18,11 +16,6 @@ export default function Home({ pin }) {
   const { createdPin } = state;
   const [geoData, setGeoData] = useState({ lat: 0, lng: 0 });
   const [pins, setPins] = useState([]);
-  // const [createdPin, setCreatedPin] = useState(false);
-  // const [newPlace, setNewPlace] = useState(null);
-  // function updatePin() {
-  //   setCreatedPin(true);
-  // }
 
   useEffect(() => {
     const fetchPins = async () => {
@@ -36,6 +29,7 @@ export default function Home({ pin }) {
     };
 
     fetchPins();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pin, createdPin]);
 
   return (
@@ -44,26 +38,14 @@ export default function Home({ pin }) {
         <title>2ECHO - homepage</title>
         <meta
           name="description"
-          content="Welcome to Map Adventure travel App. A website App where you can share with your peers about interesting places to visit such as swap meets, street markets, expositions etc."
+          content="Welcome to 2echo, a web application that allows anyone to post diverse ads and display them on an interactive, real-time map."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div>
-        <MapWithNoSSR
-          geoData={geoData}
-          pins={pins}
-          // updatePin={updatePin}
-          // setPins={setPins}
-          // setCreatedPin={setCreatedPin}
-        />
+        <MapWithNoSSR geoData={geoData} pins={pins} />
       </div>
-
-      {/* <main className={styles.main}>
-        <div>
-          <h1>Let's create a map adventure travel app</h1>
-        </div>
-      </main> */}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { useState, useRef, useContext } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents, leafletElement } from 'react-leaflet';
+import { Marker, Popup, useMapEvents } from 'react-leaflet';
 import {
   List,
   ListItem,
@@ -10,6 +10,7 @@ import {
   Box,
   MenuItem
 } from "@mui/material";
+import Image from "next/image";
 import NextLink from "next/link";
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
@@ -33,9 +34,6 @@ export default function MarkerCreator() {
         const [title, setTitle] = useState(null);
         const [description, setDescription] = useState(null);
         const [star, setStar] = useState(0);
-        // const [image, setImage] = useState(null);
-        // const currentUsername = "Adrian";
-        // const imageTemplate = "https://myimage.com"
 
        useMapEvents({
           dblclick: (ev) => {
@@ -48,7 +46,6 @@ export default function MarkerCreator() {
     },
         });
         
-
         const mapRef = useRef(null);
 
         const uploadHandler = async (e,imageField = "image") => {
@@ -56,18 +53,15 @@ export default function MarkerCreator() {
     const bodyFormData = new FormData();
     bodyFormData.append("file", file);
     try {
-      // dispatch({ type: "UPLOAD_REQUEST" });
       const { data } = await axios.post("/api/users/upload", bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
           authorization: `Bearer ${userInfo.token}`,
         },
       });
-      // dispatch({ type: "UPLOAD_SUCCESS" });
       setValue(imageField, data.secure_url);
       enqueueSnackbar("File uploaded successfully", { variant: "success" });
     } catch (err) {
-      // dispatch({ type: "UPLOAD_FAIL", payload: getError(err) });
       enqueueSnackbar(getError(err), { variant: "error" });
     }
   };
@@ -93,10 +87,6 @@ export default function MarkerCreator() {
                setValue("rating", "");
                dispatch({type: "CREATED_PIN", payload: true});
                enqueueSnackbar("Pin created successfully", { variant: "success" });
-              //  updatePin();
-              //  setPins([...pins, data]);
-              //  setCreatedPin(true);
-              //  setNewPlace(null);
           } catch (err) {
             console.log(err);
             enqueueSnackbar(getError(err), { variant: "error" });
@@ -104,28 +94,10 @@ export default function MarkerCreator() {
         };
 
         const style = {
-    // position: "relative",
-    // top: "50%",
-    // left: "50%",
-    // transform: "translate(-50%, -50%)",
-    // display: "flex",
-    // flexDirection: "column",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // alignContent: "center",
-   
     width: "sm",
     height: 520,
     backgroundColor: "#ffffff",
     margin: "20 auto",
-    // zIndex: 999,
-    // border: "2px solid #000",
-    // boxShadow: 24,
-    // boxShadow: "0 20 50 rgba(#000, .1)",
-    // backdropFilter: "blur(16px) saturate(180%)",
-    // borderRadius: 2,
-    // border: "1px solid rgba(255, 255, 255, 0.125)",
-    // color: "#ffffff",
     p: 4
   };
 
@@ -145,11 +117,13 @@ export default function MarkerCreator() {
               }}
             >
               <NextLink href="/" passHref>
-                <Link>
-                  <img
+                <Link>               
+                  <Image
                     src="/2echo-logo-no-name.svg"
                     alt="2echo"
                     className={styles.logo}
+                    width={20}
+                    height={20}
                   />
                 </Link>
               </NextLink>
@@ -168,32 +142,9 @@ export default function MarkerCreator() {
                   render={({ field }) => (
                     <TextField
                       variant="outlined"
-                      // sx={{ color: "#ffffff", fontFamily: "Comfortaa" }}
-                      // sx={{
-                      //   "& .MuiOutlinedInput-root:hover": {
-                      //     "& > fieldset": {
-                      //       borderColor: "#0f477e",
-                      //     },
-                      //   },
-                      //   label: {
-                      //     color: "#ffffff",
-                      //     fontFamily: "Comfortaa",
-                      //   },
-                      //   fieldset: {
-                      //     borderColor: "#ffffff",
-                      //   },
-                      //   input: {
-                      //     color: "#ffffff",
-                      //   },
-                      // }}
-                      // InputLabelProps={{
-                      //   style: { color: "#fff", fontFamily: "Comfortaa" },
-                      // }}
                       fullWidth
                       id="title"
                       label="Title"
-                      
-                      // inputProps={{ type: "text" }}
                       error={Boolean(errors.title)}
                       helperText={
                         errors.title
@@ -220,8 +171,7 @@ export default function MarkerCreator() {
                             variant="outlined"
                             fullWidth
                             id="image"
-                            label="Image"
-                            
+                            label="Image"                           
                             error={Boolean(errors.image)}
                             helperText={errors.image ? "Image is required" : ""}
                             {...field}
@@ -234,7 +184,6 @@ export default function MarkerCreator() {
                         Upload File
                         <input type="file" onChange={uploadHandler} hidden />
                       </Button>
-                      {/* {loadingUpload && <CircularProgress />} */}
                     </ListItem>
               <ListItem>
                 <Controller
@@ -256,26 +205,6 @@ export default function MarkerCreator() {
           rows={2}
           // defaultValue=""
           variant="outlined"
-          
-          // inputProps={{ type: "text" }}
-        
-                      // sx={{
-                      //   "& .MuiOutlinedInput-root:hover": {
-                      //     "& > fieldset": {
-                      //       borderColor: "#0f477e",
-                      //     },
-                      //   },
-                      //   label: {
-                      //     color: "#ffffff",
-                      //     fontFamily: "Comfortaa",
-                      //   },
-                      //   fieldset: {
-                      //     borderColor: "#ffffff",
-                      //   },
-                      //   input: {
-                      //     color: "#ffffff",
-                      //   },
-                      // }}
                       error={Boolean(errors.description)}
                       helperText={
                         errors.description
@@ -306,27 +235,6 @@ export default function MarkerCreator() {
           select
           variant="outlined"
           defaultValue=""
-          
-          // variant="filled"
-          // inputProps={{ type: "text" }}
-        
-                      // sx={{
-                      //   "& .MuiOutlinedInput-root:hover": {
-                      //     "& > fieldset": {
-                      //       borderColor: "#0f477e",
-                      //     },
-                      //   },
-                      //   label: {
-                      //     color: "#ffffff",
-                      //     fontFamily: "Comfortaa",
-                      //   },
-                      //   fieldset: {
-                      //     borderColor: "#ffffff",
-                      //   },
-                      //   input: {
-                      //     color: "#ffffff",
-                      //   },
-                      // }}
                       error={Boolean(errors.rating)}
                       helperText={
                         errors.rating
@@ -358,41 +266,7 @@ export default function MarkerCreator() {
             </List>
           </form>
         </Box>
-         {/* <div className={styles.card}>
-           <form className={styles.form} onSubmit={handleSubmit}>
-                  <label>Title</label>
-                  <input
-                    className={styles.input}
-                    placeholder="Enter a title"
-                    autoFocus
-                    onChange={(e) => setTitle(e.target.value)}
-                  />
-                  <label>Image</label>
-                  <button type="button" >
-                    Upload File
-                    <input type="file" onChange={(e) => uploadHandler(e)} hidden />
-                  </button>
-                  <label>Description</label>
-                  <textarea
-                    className={styles.textarea}
-                    placeholder="Say us something about this place."
-                    onChange={(e) => setDescription(e.target.value)}
-                  />
-                  <label>Rating</label>
-                  <select className={styles.select} onChange={(e) => setStar(e.target.value)}>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                  </select>
-                  <button type="submit" className={styles.submitButton}>
-                    Add Pin
-                  </button>
-                </form>
-         </div> */}
        </Popup>
-
        </Marker>
         );
       }

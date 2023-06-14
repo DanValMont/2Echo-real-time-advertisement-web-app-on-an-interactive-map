@@ -1,42 +1,16 @@
 import Head from "next/head";
-//import Image from 'next/image'
 import styles from "../styles/Home.module.css";
 import dynamic from "next/dynamic";
-import axios from "axios";
-import { useEffect, useState, useContext } from "react";
-import { MapStore } from "../context/MapStore";
+import { useState } from "react";
 import db from "../utils/db";
 import Pin from "../models/Pin";
-// import { LeafletContext } from "@react-leaflet/core";
 
 const MapWithNoSSR = dynamic(() => import("../components/Map/Map"), {
   ssr: false,
 });
 
 export default function Search({ pinDocs, countPins }) {
-  //   const { state, dispatch } = useContext(MapStore);
-  //   const { createdPin } = state;
   const [geoDataSearch, setGeoDataSearch] = useState({ lat: 0, lng: 0 });
-  // const [pins, setPins] = useState([]);
-  // const [createdPin, setCreatedPin] = useState(false);
-  // const [newPlace, setNewPlace] = useState(null);
-  // function updatePin() {
-  //   setCreatedPin(true);
-  // }
-
-  //   useEffect(() => {
-  //     const fetchPins = async () => {
-  //       try {
-  //         dispatch({ type: "CREATED_PIN", payload: false });
-  //         const { data } = await axios.get("/api/pins");
-  //         setPins(data);
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     };
-
-  //     fetchPins();
-  //   }, [pin, createdPin]);
 
   return (
     <div className={styles.container}>
@@ -44,7 +18,7 @@ export default function Search({ pinDocs, countPins }) {
         <title>2ECHO - homepage</title>
         <meta
           name="description"
-          content="Welcome to Map Adventure travel App. A website App where you can share with your peers about interesting places to visit such as swap meets, street markets, expositions etc."
+          content="Welcome to 2echo, a web application that allows anyone to post diverse ads and display them on an interactive, real-time map."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -54,17 +28,8 @@ export default function Search({ pinDocs, countPins }) {
           geoDataSearch={geoDataSearch}
           pinDocs={pinDocs}
           countPins={countPins}
-          // updatePin={updatePin}
-          // setPins={setPins}
-          // setCreatedPin={setCreatedPin}
         />
       </div>
-
-      {/* <main className={styles.main}>
-        <div>
-          <h1>Let's create a map adventure travel app</h1>
-        </div>
-      </main> */}
     </div>
   );
 }

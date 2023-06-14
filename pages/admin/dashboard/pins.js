@@ -33,12 +33,6 @@ function reducer(state, action) {
       return { ...state, loading: false, pins: action.payload, error: "" };
     case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
-    // case "CREATE_REQUEST":
-    //   return { ...state, loadingCreate: true };
-    // case "CREATE_SUCCESS":
-    //   return { ...state, loadingCreate: false };
-    // case "CREATE_FAIL":
-    //   return { ...state, loadingCreate: false };
     case "DELETE_REQUEST":
       return { ...state, loadingDelete: true };
     case "DELETE_SUCCESS":
@@ -86,31 +80,10 @@ function AdminPins() {
     } else {
       fetchData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [successDelete]);
 
   const { enqueueSnackbar } = useSnackbar();
-
-  //   const createHandler = async () => {
-  //     if (!window.confirm("Are you sure?")) {
-  //       return;
-  //     }
-  //     try {
-  //       dispatch({ type: "CREATE_REQUEST" });
-  //       const { data } = await axios.post(
-  //         `/api/admin/products`,
-  //         {},
-  //         {
-  //           headers: { authorization: `Bearer ${userInfo.token}` },
-  //         }
-  //       );
-  //       dispatch({ type: "CREATE_SUCCESS" });
-  //       enqueueSnackbar("Product created successfully", { variant: "success" });
-  //       router.push(`/admin/product/${data.product._id}`);
-  //     } catch (err) {
-  //       dispatch({ type: "CREATE_FAIL" });
-  //       enqueueSnackbar(getError(err), { variant: "error" });
-  //     }
-  //   };
 
   const deleteHandler = async (pinId) => {
     if (!window.confirm("Are you sure?")) {
@@ -135,7 +108,7 @@ function AdminPins() {
         <title>2ECHO-Dashboard-Admin-Pins</title>
         <meta
           name="description"
-          content="Welcome to Map Adventure travel App. A website App where you can share with your peers about interesting places to visit such as swap meets, street markets, expositions etc."
+          content="Welcome to 2echo, a web application that allows anyone to post diverse ads and display them on an interactive, real-time map."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

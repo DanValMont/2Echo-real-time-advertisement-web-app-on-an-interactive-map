@@ -20,8 +20,6 @@ import {
 } from "@mui/material";
 import { getError } from "../../../../utils/error";
 import { MapStore } from "../../../../context/MapStore";
-// import Layout from "../../../components/Layout";
-// import useStyles from "../../../utils/styles";
 import { Controller, useForm } from "react-hook-form";
 import { useSnackbar } from "notistack";
 import Navbar from "../../../../components/Navbar/Navbar";
@@ -71,7 +69,6 @@ function PinEdit({ params }) {
   } = useForm();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const router = useRouter();
-  //   const classes = useStyles();
   const { userInfo } = state;
 
   useEffect(() => {
@@ -98,6 +95,7 @@ function PinEdit({ params }) {
       };
       fetchData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const uploadHandler = async (e, imageField = "image") => {
@@ -205,10 +203,6 @@ function PinEdit({ params }) {
                 sx={{ width: "100%", maxWidth: 800, margin: "0 auto" }}
                 onSubmit={handleSubmit(submitHandler)}
               >
-                {/* <form
-                  onSubmit={handleSubmit(submitHandler)}
-                  //   className={classes.form}
-                > */}
                 <List>
                   <ListItem>
                     <Controller
@@ -322,26 +316,6 @@ function PinEdit({ params }) {
                           select
                           variant="outlined"
                           defaultValue=""
-                          // variant="filled"
-                          // inputProps={{ type: "text" }}
-
-                          // sx={{
-                          //   "& .MuiOutlinedInput-root:hover": {
-                          //     "& > fieldset": {
-                          //       borderColor: "#0f477e",
-                          //     },
-                          //   },
-                          //   label: {
-                          //     color: "#ffffff",
-                          //     fontFamily: "Comfortaa",
-                          //   },
-                          //   fieldset: {
-                          //     borderColor: "#ffffff",
-                          //   },
-                          //   input: {
-                          //     color: "#ffffff",
-                          //   },
-                          // }}
                           error={Boolean(errors.rating)}
                           helperText={errors.rating ? "rating is required" : ""}
                           {...field}
@@ -415,7 +389,6 @@ function PinEdit({ params }) {
                     {loadingUpdate && <CircularProgress />}
                   </ListItem>
                 </List>
-                {/* </form> */}
               </ListItem>
             </List>
           </Card>

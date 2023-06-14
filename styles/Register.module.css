@@ -1,27 +1,11 @@
 .background_image { 
     margin: 0;
     padding: 0;
-    /* position: absolute; review the css*/
-    /* added */
-    /* z-index: 1; */
-    /* added above */
-    /* top: 0;
-    left: 0;
-    bottom: 0; */
-    /* Photo by Kammeran Gonzalez-Keola from Pexels: */
     background:
     url("/images/register-background.jpg")
     no-repeat center center fixed ;
-    /* filter: invert(1); */
     background-size: cover;
     filter: brightness(60%);
-    
-
-    /* transform: scale(1.1);
-  transition: transform 6s cubic-bezier(0.25, 0.45, 0.45, 0.95); */
-    /* object-fit: cover; */
-    /* object-position: left; */
-    /* height: 100%; */
     width: 100vw;
     height: 100vh;
 }
@@ -35,6 +19,5 @@
 }
 
 .logo {
-  width: 45px;
-  
+  width: 45px; 
 }

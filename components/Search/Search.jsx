@@ -5,11 +5,6 @@ import { useMap } from 'react-leaflet';
 
 export function Search() {
   const map = useMap();
-  // const control = geosearch();
-  // // const code = geocode()
-  // control.addTo(map);
-  // map.setView(coords, 12);
-  // return null;
 
   useEffect(() => {
     const searchControl = new SearchControl({
@@ -18,7 +13,7 @@ export function Search() {
 });
  map.addControl(searchControl);
  return() => map.removeControl(searchControl)
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;

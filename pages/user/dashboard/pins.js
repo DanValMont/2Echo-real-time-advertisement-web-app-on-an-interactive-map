@@ -33,12 +33,6 @@ function reducer(state, action) {
       return { ...state, loading: false, pins: action.payload, error: "" };
     case "FETCH_FAIL":
       return { ...state, loading: false, error: action.payload };
-    // case "CREATE_REQUEST":
-    //   return { ...state, loadingCreate: true };
-    // case "CREATE_SUCCESS":
-    //   return { ...state, loadingCreate: false };
-    // case "CREATE_FAIL":
-    //   return { ...state, loadingCreate: false };
     case "DELETE_REQUEST":
       return { ...state, loadingDelete: true };
     case "DELETE_SUCCESS":
@@ -86,31 +80,10 @@ function UserPins() {
     } else {
       fetchData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [successDelete]);
 
   const { enqueueSnackbar } = useSnackbar();
-
-  //   const createHandler = async () => {
-  //     if (!window.confirm("Are you sure?")) {
-  //       return;
-  //     }
-  //     try {
-  //       dispatch({ type: "CREATE_REQUEST" });
-  //       const { data } = await axios.post(
-  //         `/api/admin/products`,
-  //         {},
-  //         {
-  //           headers: { authorization: `Bearer ${userInfo.token}` },
-  //         }
-  //       );
-  //       dispatch({ type: "CREATE_SUCCESS" });
-  //       enqueueSnackbar("Product created successfully", { variant: "success" });
-  //       router.push(`/admin/product/${data.product._id}`);
-  //     } catch (err) {
-  //       dispatch({ type: "CREATE_FAIL" });
-  //       enqueueSnackbar(getError(err), { variant: "error" });
-  //     }
-  //   };
 
   const deleteHandler = async (pinId) => {
     if (!window.confirm("Are you sure?")) {
@@ -145,11 +118,6 @@ function UserPins() {
           <Navbar />
           <Card sx={{ marginTop: 10, marginBottom: 10 }}>
             <List>
-              {/* <NextLink href="/admin/dashboard/users" passHref>
-                <ListItem button component="a">
-                  <ListItemText primary="Users"></ListItemText>
-                </ListItem>
-              </NextLink> */}
               <NextLink href="/user/dashboard/pins" passHref>
                 <ListItem selected button component="a">
                   <ListItemText primary="Pins"></ListItemText>

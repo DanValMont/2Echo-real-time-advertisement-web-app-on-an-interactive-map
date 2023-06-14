@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import NextLink from "next/link";
+import Image from "next/image";
 import { useContext, useEffect } from "react";
 import Head from "next/head";
 import { MapStore } from "../context/MapStore";
@@ -33,6 +34,7 @@ export default function Register() {
     if (userInfo) {
       router.push("/");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const style = {
@@ -40,19 +42,10 @@ export default function Register() {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    // display: "flex",
-    // flexDirection: "column",
-    // alignItems: "center",
-    // justifyContent: "center",
-    // alignContent: "center",
     maxWidth: "md",
     minWidth: "sm",
     backgroundColor: "rgba(17, 25, 40, 0.75)",
     margin: "20 auto",
-    // zIndex: 999,
-    // border: "2px solid #000",
-    // boxShadow: 24,
-    // boxShadow: "0 20 50 rgba(#000, .1)",
     backdropFilter: "blur(16px) saturate(180%)",
     borderRadius: 2,
     border: "1px solid rgba(255, 255, 255, 0.125)",
@@ -91,7 +84,7 @@ export default function Register() {
         <title>2ECHO-register</title>
         <meta
           name="description"
-          content="Welcome to Map Adventure travel App. A website App where you can share with your peers about interesting places to visit such as swap meets, street markets, expositions etc."
+          content="Welcome to 2echo, a web application that allows anyone to post diverse ads and display them on an interactive, real-time map."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -117,10 +110,12 @@ export default function Register() {
                     width: "45px",
                   }}
                 >
-                  <img
+                  <Image
                     src="/2echo-logo-no-name.svg"
                     alt="2echo"
                     className={styles.logo}
+                    width={45}
+                    height={45}
                   />
                 </Link>
               </NextLink>

@@ -50,7 +50,6 @@ function reducer(state, action) {
 function AdminUsers() {
   const { state } = useContext(MapStore);
   const router = useRouter();
-  //   const classes = useStyles();
   const { userInfo } = state;
 
   const [{ loading, error, users, successDelete, loadingDelete }, dispatch] =
@@ -80,6 +79,7 @@ function AdminUsers() {
     } else {
       fetchData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [successDelete]);
 
   const { enqueueSnackbar } = useSnackbar();
@@ -106,7 +106,7 @@ function AdminUsers() {
         <title>2ECHO-Dashboard-Admin-Users</title>
         <meta
           name="description"
-          content="Welcome to Map Adventure travel App. A website App where you can share with your peers about interesting places to visit such as swap meets, street markets, expositions etc."
+          content="Welcome to 2echo, a web application that allows anyone to post diverse ads and display them on an interactive, real-time map."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -218,9 +218,3 @@ function AdminUsers() {
 }
 
 export default dynamic(() => Promise.resolve(AdminUsers), { ssr: false });
-
-//https://www.youtube.com/watch?v=oxFr7we3LC8
-//https://dev.to/nilmadhabmondal/let-s-build-a-video-chat-app-with-javascript-and-webrtc-380b
-//https://peerjs.com/docs/#start
-//https://blog.logrocket.com/getting-started-peerjs/
-//https://downloadly.ir/elearning/video-tutorials/webrtc-practical-course-create-video-chat-application/

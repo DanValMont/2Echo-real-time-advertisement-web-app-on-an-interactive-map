@@ -1,34 +1,36 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 2ECHO
 
-## Getting Started
+Welcome to 2echo, a web application that allows anyone to post diverse ads and display them on an interactive, real-time map.
 
-First, run the development server:
+## Features and Advantages
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+### Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* Ads are displayed as popup markers on an interactive world map.
+* Users can see images, description and rating of the ad by clicking on the popup marker.
+* Users can search for products or services in the search bar and the results will appear immediately through popup markers on the map.
+* Sign up and sign in page to manage users.
+* Manage user profile and show pins (ads) history of users.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Advantages
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+* Manage admin to list, grant and deny admin permissions for users.
+* User can manage to create, update and delete ads.
+* Upload images of ads.
+* Admin user can list and delete ads.
+* Also admin user can delete an specific user.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Technologies applied to this project
 
-## Learn More
+* **Next.js** a powerful full-stack React framework.
+* **Material UI** to design a web application based on the best practices in UI and UX.
+* **React Context** to manage the state of the application in a predictable way.
+* **Next-Connect** to build an API in Next.js.
+* **Mongoose.js** to save and retrieve data from **Mongo DB Atlas** (database).
+* **JSON Web Tokens (JWT)** to authenticate users.
+* **Bcryptjs** to build a password security platform that uses an algorithm to hash passwords with a salt
+* **React Leaflet** based on Leaflet, (the leading open-source JavaScript library for mobile-friendly interactive maps that works efficiently across all major desktop and mobile platforms) React Leaflet leverages it to abstract Leaflet layers as React components.
+* **React Hook Form** to create performant, flexible and extensible forms with easy-to-use validation.
+* **Cloudinary** server to upload files (images).
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Demo Website

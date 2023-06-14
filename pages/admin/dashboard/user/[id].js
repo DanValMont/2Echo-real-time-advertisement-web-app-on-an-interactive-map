@@ -19,8 +19,6 @@ import {
 } from "@mui/material";
 import { getError } from "../../../../utils/error";
 import { MapStore } from "../../../../context/MapStore";
-// import Layout from "../../../components/Layout";
-// import useStyles from "../../../utils/styles";
 import { Controller, useForm } from "react-hook-form";
 import { useSnackbar } from "notistack";
 import Navbar from "../../../../components/Navbar/Navbar";
@@ -71,7 +69,6 @@ function UserEdit({ params }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const router = useRouter();
-  //   const classes = useStyles();
   const { userInfo } = state;
 
   useEffect(() => {
@@ -93,6 +90,7 @@ function UserEdit({ params }) {
       };
       fetchData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const submitHandler = async ({ name }) => {
@@ -121,7 +119,7 @@ function UserEdit({ params }) {
         <title>2ECHO - {`Edit User ${userId}`}</title>
         <meta
           name="description"
-          content="Welcome to Map Adventure travel App. A website App where you can share with your peers about interesting places to visit such as swap meets, street markets, expositions etc."
+          content="Welcome to 2echo, a web application that allows anyone to post diverse ads and display them on an interactive, real-time map."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -170,10 +168,6 @@ function UserEdit({ params }) {
                 sx={{ width: "100%", maxWidth: 800, margin: "0 auto" }}
                 onSubmit={handleSubmit(submitHandler)}
               >
-                {/* <form
-                  onSubmit={handleSubmit(submitHandler)}
-                  // className={classes.form}
-                > */}
                 <List>
                   <ListItem>
                     <Controller
@@ -222,7 +216,6 @@ function UserEdit({ params }) {
                     {loadingUpdate && <CircularProgress />}
                   </ListItem>
                 </List>
-                {/* </form> */}
               </ListItem>
             </List>
           </Card>
