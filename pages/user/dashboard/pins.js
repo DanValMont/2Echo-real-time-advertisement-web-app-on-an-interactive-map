@@ -108,7 +108,7 @@ function UserPins() {
         <title>2ECHO-Dashboard-User-Pins</title>
         <meta
           name="description"
-          content="Welcome to Map Adventure travel App. A website App where you can share with your peers about interesting places to visit such as swap meets, street markets, expositions etc."
+          content="Welcome to 2echo, a web application that allows anyone to post diverse ads and display them on an interactive, real-time map."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
